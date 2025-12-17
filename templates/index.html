@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Case Management</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Test Cases</h1>
+    <a href="/add">Add New Test Case</a>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for case in test_cases %}
+        <tr>
+            <td>{{ case.title }}</td>
+            <td>{{ case.description }}</td>
+            <td>{{ case.status }}</td>
+            <td>
+                <a href="/edit/{{ case.id }}">Edit</a> |
+                <a href="/delete/{{ case.id }}" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
