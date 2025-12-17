@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Test Case</title>
+</head>
+<body>
+    <h1>Edit Test Case</h1>
+    <form method="POST" action="/edit/{{ test_case.id }}">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ test_case.title }}" required><br><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" required>{{ test_case.description }}</textarea><br><br>
+        <label for="status">Status:</label><br>
+        <select id="status" name="status">
+            <option value="Pending" {% if test_case.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Running" {% if test_case.status == 'Running' %}selected{% endif %}>Running</option>
+            <option value="Passed" {% if test_case.status == 'Passed' %}selected{% endif %}>Passed</option>
+            <option value="Failed" {% if test_case.status == 'Failed' %}selected{% endif %}>Failed</option>
+        </select><br><br>
+        <input type="submit" value="Update Case">
+    </form>
+    <a href="/">Back to list</a>
+</body>
+</html>
