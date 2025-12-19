@@ -25,7 +25,7 @@ class TestCase(db.Model):
 # --- Routes for CRUD Operations ---
 
 # Create the database tables
-@app.before_first_request
+@app.before_request
 def create_tables():
     db.create_all()
 
